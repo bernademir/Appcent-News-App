@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/newsPage"
+        android:icon="@drawable/ic_news"
+        android:title="News"
+        android:contentDescription="News" />
+    <item
+        android:id="@+id/favPage"
+        android:icon="@drawable/ic_favs"
+        android:title="Favorites"
+        android:contentDescription="Favorites"/>
+
+</menu>
