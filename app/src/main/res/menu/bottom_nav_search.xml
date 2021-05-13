@@ -9,8 +9,17 @@
         android:contentDescription="News" />
     <item
         android:id="@+id/favPage"
-        android:icon="@drawable/ic_favs"
+        android:icon="@drawable/ic_fav"
         android:title="Favorites"
         android:contentDescription="Favorites"/>
+
+    <item
+        android:id="@+id/action_search"
+        android:orderInCategory="100"
+        android:title="Search"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:theme="@android:style/Theme.Holo.Light"/>
 
 </menu>

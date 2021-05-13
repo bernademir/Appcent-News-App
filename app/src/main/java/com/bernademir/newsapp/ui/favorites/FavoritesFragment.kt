@@ -1,4 +1,4 @@
-package com.bernademir.newsapp.screens.favorites
+package com.bernademir.newsapp.ui.favorites
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

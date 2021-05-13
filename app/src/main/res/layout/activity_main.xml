@@ -30,6 +30,6 @@
         app:itemIconTint="@drawable/bottom_nav_color"
         app:itemTextColor="@drawable/bottom_nav_color"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav" />
+        app:menu="@menu/bottom_nav_search" />
 
 </LinearLayout>
