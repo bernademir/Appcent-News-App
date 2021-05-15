@@ -1,7 +1,6 @@
-package com.bernademir.newsapp.ui.news
+package com.bernademir.newsapp.ui
 
 import android.app.SearchManager
-import android.content.ClipData
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -50,6 +49,8 @@ class NewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
        val view= inflater.inflate(layout.fragment_news, container, false)
 
+        (activity as AppCompatActivity).supportActionBar?.title = "Appcent NewsApp"
+
         val retrofit: Retrofit = generateRetrofitBuilder()
         everythingEndpoint = retrofit.create(EverythingEndpoint::class.java)
         newsApiConfig = resources.getString(string.api_key)
@@ -78,6 +79,8 @@ class NewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         view.findViewById<RecyclerView>(R.id.recycler_view).adapter = articleAdapter
 
         setHasOptionsMenu(true)
+
+        //setUpSearchMenuItem(menu)
 
         return view
     }
@@ -110,11 +113,12 @@ class NewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.bottom_nav_search, menu)
+
             setUpSearchMenuItem(menu)
     }
 
-
     private fun setUpSearchMenuItem(menu: Menu) {
+
         val searchManager: SearchManager = (this.activity?.getSystemService(Context.SEARCH_SERVICE)) as SearchManager
         val searchView: SearchView = ((menu.findItem(R.id.action_search)?.actionView)) as SearchView
         val searchMenuItem: MenuItem = menu.findItem(R.id.action_search)

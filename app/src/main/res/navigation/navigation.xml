@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/favPage"
-        android:name="com.bernademir.newsapp.ui.favorites.FavoritesFragment"
+        android:name="com.bernademir.newsapp.ui.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/newsPage"
-        android:name="com.bernademir.newsapp.ui.news.NewsFragment"
+        android:name="com.bernademir.newsapp.ui.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
 </navigation>

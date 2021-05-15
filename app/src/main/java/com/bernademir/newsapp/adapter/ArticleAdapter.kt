@@ -1,5 +1,6 @@
 package com.bernademir.newsapp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.bernademir.newsapp.R
 import com.bernademir.newsapp.model.Article
+import com.bernademir.newsapp.ui.NewsDetailActivity
 import com.squareup.picasso.Picasso
 
 class ArticleAdapter(
@@ -31,7 +33,9 @@ class ArticleAdapter(
         val article: Article = articleList[itemIndex]
         setPropertiesForArticleViewHolder(articleViewHolder, article)
         articleViewHolder.cardView.setOnClickListener {
-            //habere tiklaninca detay sayfasina gitmeli...
+            val intent = Intent(it.context, NewsDetailActivity::class.java)
+            intent?.putExtra("data", article)
+            it.context.startActivity(intent)
         }
     }
 
