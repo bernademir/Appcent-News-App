@@ -7,7 +7,8 @@
         android:icon="@drawable/ic_share"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:title="share" />
+        android:title="share"
+        android:onClick="onClickShare"/>
     <item
         android:id="@+id/action_favorite"
         android:icon="@drawable/ic_fav"

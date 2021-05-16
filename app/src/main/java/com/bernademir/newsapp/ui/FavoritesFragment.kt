@@ -1,37 +1,49 @@
 package com.bernademir.newsapp.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.bernademir.newsapp.R
+import com.bernademir.newsapp.adapter.ArticleAdapter
+import com.bernademir.newsapp.model.Article
 import com.squareup.picasso.Picasso
 
 class FavoritesFragment : Fragment() {
+    private lateinit var articleAdapter: ArticleAdapter
+    private lateinit var articleList: ArrayList<Article>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
         val view = inflater.inflate(R.layout.fragment_favorites, container, false)
         (activity as AppCompatActivity).supportActionBar?.title = "Favorites"
 
-        val data = (activity as AppCompatActivity).intent.extras
-        val title = data?.getString("title")
-        val description = data?.getString("description")
-        val image = data?.getString("image")
+        val favTitle = requireArguments().getString("newsTitle")
+        view.findViewById<TextView>(R.id.title_text).text = favTitle
 
-        view.findViewById<TextView>(R.id.article_title).text = title
-        view.findViewById<TextView>(R.id.article_description).text = description
+        val favContent = requireArguments().getString("newsContent")
+        view.findViewById<TextView>(R.id.content_text).text = favContent
+
+        val favImage = requireArguments().getString("newsTitle")
         Picasso.get()
-            .load(image)
+            .load(favImage.toString())
             .centerCrop()
             .fit()
-            .into(view.findViewById<ImageView>(R.id.article_urlToImage))
+            .into(view.findViewById<ImageView>(R.id.detail_image))
 
+        if (articleList.size > 0) {
+            view?.findViewById<RecyclerView>(R.id.recycler_view_fav)!!.visibility = View.GONE
+            view?.findViewById<RecyclerView>(R.id.recycler_view_fav)!!.visibility = View.VISIBLE
+            articleAdapter.setArticles(articleList)
+        } else {
+            view?.findViewById<RecyclerView>(R.id.recycler_view_fav)!!.visibility = View.GONE
+            view?.findViewById<RecyclerView>(R.id.recycler_view_fav)!!.visibility = View.VISIBLE
+        }
         return view
     }
 }

@@ -7,10 +7,10 @@ import kotlinx.android.parcel.Parcelize
 data class Article(
     val source: Source?,
     val author: String?,
-    val title: String?,
+    var title: String?,
     val description: String?,
     val url: String?,
-    val urlToImage: String?,
+    var urlToImage: String?,
     val publishedAt: String?,
-    val content: String?
+    var content: String?
 ):Parcelable

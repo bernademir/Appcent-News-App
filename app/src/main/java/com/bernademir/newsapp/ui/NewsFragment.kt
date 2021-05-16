@@ -30,8 +30,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class NewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
-
-
     private val ENDPOINT_URL by lazy { "https://newsapi.org/v2/" }
     private lateinit var everythingEndpoint: EverythingEndpoint
     private lateinit var newsApiConfig: String
@@ -48,7 +46,6 @@ class NewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     ): View? {
 
        val view= inflater.inflate(layout.fragment_news, container, false)
-
         (activity as AppCompatActivity).supportActionBar?.title = "Appcent NewsApp"
 
         val retrofit: Retrofit = generateRetrofitBuilder()
@@ -64,24 +61,16 @@ class NewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         articleList = ArrayList()
         articleAdapter = ArticleAdapter(articleList)
-
         userKeyWordInput = ""
-
         compositeDisposable = CompositeDisposable()
 
-        view.findViewById<RecyclerView>(R.id.recycler_view).setHasFixedSize(
-            true
-        )
-        view.findViewById<RecyclerView>(R.id.recycler_view).layoutManager = LinearLayoutManager(
-            context
-        )
+        view.findViewById<RecyclerView>(R.id.recycler_view).setHasFixedSize(true)
+        view.findViewById<RecyclerView>(R.id.recycler_view).layoutManager = LinearLayoutManager(context)
         view.findViewById<RecyclerView>(R.id.recycler_view).itemAnimator = DefaultItemAnimator()
         view.findViewById<RecyclerView>(R.id.recycler_view).adapter = articleAdapter
 
         setHasOptionsMenu(true)
-
         //setUpSearchMenuItem(menu)
-
         return view
     }
 
@@ -103,7 +92,6 @@ class NewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun generateRetrofitBuilder(): Retrofit {
-
         return Retrofit.Builder()
             .baseUrl(ENDPOINT_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -113,12 +101,10 @@ class NewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.bottom_nav_search, menu)
-
             setUpSearchMenuItem(menu)
     }
 
     private fun setUpSearchMenuItem(menu: Menu) {
-
         val searchManager: SearchManager = (this.activity?.getSystemService(Context.SEARCH_SERVICE)) as SearchManager
         val searchView: SearchView = ((menu.findItem(R.id.action_search)?.actionView)) as SearchView
         val searchMenuItem: MenuItem = menu.findItem(R.id.action_search)

@@ -33,8 +33,6 @@ class WebViewActivity : AppCompatActivity() {
             }
         }
          webView.loadUrl(webDataUrl!!.toString())
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

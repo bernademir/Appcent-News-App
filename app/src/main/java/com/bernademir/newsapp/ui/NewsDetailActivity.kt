@@ -1,15 +1,12 @@
 package com.bernademir.newsapp.ui
 
 import android.content.Intent
-import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bernademir.newsapp.R
@@ -25,9 +22,7 @@ class NewsDetailActivity : AppCompatActivity(){
         val news = data?.getParcelable<Article>("data")
 
         findViewById<TextView>(R.id.title_text).text = news?.title.toString()
-
         findViewById<TextView>(R.id.author_name).text = news?.author.toString()
-
         findViewById<TextView>(R.id.date_text).text = news?.publishedAt.toString()
 
         findViewById<TextView>(R.id.content_text).text = news?.description.toString() + news?.content.toString()
@@ -38,7 +33,6 @@ class NewsDetailActivity : AppCompatActivity(){
             .centerCrop()
             .fit()
             .into(findViewById<ImageView>(R.id.detail_image))
-
 
         val actionbar = supportActionBar
         actionbar?.setDisplayHomeAsUpEnabled(true)
@@ -62,29 +56,42 @@ class NewsDetailActivity : AppCompatActivity(){
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_favorite -> {
-            onClickFav()
+            onClickFav(item)
             true
         }
         R.id.action_share -> {
-//            val iconId = resources.getIdentifier("action_share", "id", "android")
-//            findViewById<SearchView>(iconId).setOnClickListener {
-//                val s = (R.id.title_text).toString()
-//                val shareIntent = Intent()
-//                shareIntent.action = Intent.ACTION_SEND
-//                shareIntent.type="text/plain"
-//                shareIntent.putExtra(Intent.EXTRA_TEXT, s);
-//                startActivity(Intent.createChooser(shareIntent,"Share via"))
-//            }
+            onClickShare(item)
             true
         }
         else -> super.onOptionsItemSelected(item)
     }
 
-    private fun onClickFav(){
-        val intent = Intent(this@NewsDetailActivity,FavoritesFragment::class.java)
-        intent.putExtra("title",R.id.title_text)
-        intent.putExtra("description",R.id.content_text)
-        intent.putExtra("image",R.id.detail_image)
-        startActivity(intent)
+    fun onClickShare(item: MenuItem) {
+        item.setOnMenuItemClickListener() {
+            val dataUrl = intent.extras
+            val newsUrl = dataUrl?.getParcelable<Article>("data")
+            val share = Intent.createChooser(Intent().apply {
+                action = Intent.ACTION_SENDTO
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, newsUrl?.url.toString())
+            }, null)
+            startActivity(share)
+            true
+        }
+
+    }
+
+    fun onClickFav(item: MenuItem) {
+        item.setOnMenuItemClickListener() {
+            val data = intent.extras
+            val favNews = data?.getParcelable<Article>("data")
+            val bundle = Bundle()
+            bundle.putString("newsTitle", favNews?.title)
+            bundle.putString("newsContent", favNews?.content)
+            bundle.putString("newsImage", favNews?.urlToImage)
+            val favFragment = FavoritesFragment()
+            favFragment.arguments = bundle
+            true
+        }
     }
 }
