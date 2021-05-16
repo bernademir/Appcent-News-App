@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".ui.NewsDetailActivity"
+    tools:context=".view.NewsDetailActivity"
     tools:viewBindingIgnore="true">
 
     <ImageView
@@ -22,7 +22,7 @@
     <TextView
         android:id="@+id/title_text"
         android:layout_width="404dp"
-        android:layout_height="59dp"
+        android:layout_height="wrap_content"
         android:paddingStart="8dp"
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
@@ -86,17 +86,21 @@
     </ScrollView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
+        android:gravity="bottom">
 
         <Button
             android:id="@+id/source_button"
             android:layout_width="231dp"
             android:layout_height="40dp"
             android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/button_shape"
             android:text="News Source"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:background="@drawable/button_shape"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.bernademir.newsapp.ui
+package com.bernademir.newsapp.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

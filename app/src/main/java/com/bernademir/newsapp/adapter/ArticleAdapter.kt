@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.bernademir.newsapp.R
 import com.bernademir.newsapp.model.Article
-import com.bernademir.newsapp.ui.NewsDetailActivity
+import com.bernademir.newsapp.view.NewsDetailActivity
 import com.squareup.picasso.Picasso
 
 class ArticleAdapter(

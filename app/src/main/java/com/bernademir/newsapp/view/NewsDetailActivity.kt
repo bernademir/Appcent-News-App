@@ -1,4 +1,4 @@
-package com.bernademir.newsapp.ui
+package com.bernademir.newsapp.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -67,18 +67,15 @@ class NewsDetailActivity : AppCompatActivity(){
     }
 
     fun onClickShare(item: MenuItem) {
-        item.setOnMenuItemClickListener() {
-            val dataUrl = intent.extras
-            val newsUrl = dataUrl?.getParcelable<Article>("data")
-            val share = Intent.createChooser(Intent().apply {
-                action = Intent.ACTION_SENDTO
-                type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, newsUrl?.url.toString())
-            }, null)
-            startActivity(share)
-            true
+        val dataUrl = intent.extras
+        val newsUrl = dataUrl?.getParcelable<Article>("data")
+        val share : Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, newsUrl?.url.toString())
+            type = "text/plain"
         }
-
+        val shareIntent = Intent.createChooser(share, null)
+        startActivity(shareIntent)
     }
 
     fun onClickFav(item: MenuItem) {

@@ -1,12 +1,10 @@
-package com.bernademir.newsapp.ui
+package com.bernademir.newsapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.TextView
 import com.bernademir.newsapp.R
-import com.bernademir.newsapp.model.Article
 
 class WebViewActivity : AppCompatActivity() {
     private lateinit var webView: WebView

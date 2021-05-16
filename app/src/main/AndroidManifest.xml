@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.WebViewActivity"></activity>
-        <activity android:name=".ui.NewsDetailActivity" />
-        <activity android:name="ui.news.NewsActivity" />
-        <activity android:name="ui.favorites.FavoritesActivity" />
+        <activity android:name=".view.WebViewActivity"></activity>
+        <activity android:name=".view.NewsDetailActivity" />
+        <activity android:name="view.news.NewsActivity" />
+        <activity android:name="view.favorites.FavoritesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
