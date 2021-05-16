@@ -1,5 +1,7 @@
 # Appcent News App
 
+This project allows you to fetch articles from the News API and search for keywords.<br>
+
 Bottom Navigation Bar <br>
 Navigation <br>
 RxJava 2 (working with a large amount of data) <br>
